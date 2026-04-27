@@ -200,6 +200,8 @@
 
     .input-wrapper {
       position: relative;
+      display: flex;
+      align-self: center;
     }
 
     .input-wrapper i {
@@ -215,15 +217,12 @@
 
     .input-wrapper input {
       width: 100%;
-      padding: 14px 16px 14px 46px;
+      padding: 14px 45px 14px 46px; /* espacio real para iconos */
       background: var(--input-bg);
       border: 1px solid var(--input-border);
       border-radius: 12px;
       color: var(--white);
-      font-family: 'DM Sans', sans-serif;
       font-size: 15px;
-      transition: all 0.25s ease;
-      outline: none;
     }
 
     .input-wrapper input::placeholder { color: rgba(255,255,255,0.25); }
@@ -241,14 +240,16 @@
 
     /* Toggle password */
     .toggle-pass {
-      position: absolute;
-      right: 16px; top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      color: var(--text-muted);
-      font-size: 15px;
-      transition: color 0.2s;
-    }
+ 
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2; /* 🔥 clave para que no se salga */
+    color: rgba(255,255,255,0.6);
+  }
+
     .toggle-pass:hover { color: var(--white); }
 
     /* Remember + Forgot */
