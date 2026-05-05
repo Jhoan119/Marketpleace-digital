@@ -144,7 +144,7 @@ body {
 /*MARGEN DEL ENCABEZADO*/
 
 #hero {
-  background: url("img/hero4.png") no-repeat;
+  background: url("../img/hero4.png") no-repeat;
   background-size: cover;
   background-position: top 25% right 0;
   height: 90vh;
