@@ -1102,3 +1102,115 @@ body {
             .form-header h2 { font-size: 30px; }
         }
     
+/* ============================================================
+   AUTH — TOAST, ERRORES, SPINNER, PERFIL
+   ============================================================ */
+
+/* Toast de notificación */
+.auth-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #222;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s ease;
+  z-index: 99999;
+  white-space: nowrap;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+.auth-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.auth-toast.success { background: #1a7f52; }
+.auth-toast.error   { background: #c0392b; }
+
+/* Mensajes de error en formularios */
+.auth-error {
+  display: block;
+  color: #e74c3c;
+  font-size: 13px;
+  margin-bottom: 10px;
+  min-height: 18px;
+  font-weight: 500;
+}
+
+/* Spinner en botones */
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Menú desplegable de perfil */
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  padding: 16px;
+  min-width: 200px;
+  z-index: 9999;
+  animation: fadeDown 0.2s ease;
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.profile-dropdown .profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.profile-dropdown .profile-info i {
+  font-size: 36px;
+  color: #e8b04b;
+}
+.profile-dropdown .profile-info span {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+}
+.profile-dropdown .profile-info small {
+  font-size: 12px;
+  color: #888;
+}
+.profile-dropdown hr {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 8px 0;
+}
+.profile-dropdown button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #e74c3c;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-align: left;
+  transition: background 0.2s;
+}
+.profile-dropdown button:hover {
+  background: #fff0f0;
+}
