@@ -120,6 +120,7 @@
                         <a href="#" class="forgot-link" onclick="openForgotModal()">¿Olvidaste tu contraseña?</a>
                     </div>
 
+                    <span id="login-error" class="auth-error"></span>
                     <button type="submit" class="btn-submit">Iniciar sesión</button>
                 </form>
 
@@ -177,6 +178,7 @@
                         </div>
                     </div>
 
+                    <span id="register-error" class="auth-error"></span>
                     <button type="submit" class="btn-submit">Crear cuenta</button>
                 </form>
 
@@ -208,6 +210,7 @@
                         </div>
                     </div>
 
+                    <span id="forgot-error" class="auth-error"></span>
                     <button type="submit" class="btn-submit">Enviar instrucciones</button>
                 </form>
 
@@ -220,7 +223,9 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
+    <script type="module" src="auth.js"></script>
     <script>
         // Renderizar todos los productos en Shop
         const grid = document.getElementById("shop-grid");
@@ -285,73 +290,7 @@
         toggle.addEventListener("click", () => navbar.classList.toggle("show"));
         navbar.querySelectorAll("a").forEach(a => a.addEventListener("click", () => navbar.classList.remove("show")));
 
-        function openLoginModal() {
-            document.getElementById('modal-login').classList.add('open');
-        }
-        function closeLoginModal() {
-            document.getElementById('modal-login').classList.remove('open');
-        }
-        function openRegisterModal() {
-            closeLoginModal();
-            document.getElementById('modal-register').classList.add('open');
-        }
-        function closeRegisterModal() {
-            document.getElementById('modal-register').classList.remove('open');
-        }
-        function openForgotModal() {
-            closeLoginModal();
-            document.getElementById('modal-forgot').classList.add('open');
-        }
-        function closeForgotModal() {
-            document.getElementById('modal-forgot').classList.remove('open');
-        }
-        function switchToLogin() {
-            closeRegisterModal();
-            closeForgotModal();
-            openLoginModal();
-        }
-        function handleModalClick(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.classList.remove('open');
-            }
-        }
-        function togglePass() {
-            const input = document.getElementById('password');
-            const icon = document.getElementById('eye-icon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.replace('fa-eye', 'fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.replace('fa-eye-slash', 'fa-eye');
-            }
-        }
-        function togglePassRegister() {
-            const input = document.getElementById('register-password');
-            const icon = document.getElementById('register-eye-icon');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.replace('fa-eye', 'fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icon.classList.replace('fa-eye-slash', 'fa-eye');
-            }
-        }
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Login exitoso (simulado)');
-            closeLoginModal();
-        });
-        document.getElementById('register-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Registro exitoso (simulado)');
-            closeRegisterModal();
-        });
-        document.getElementById('forgot-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Instrucciones enviadas (simulado)');
-            closeForgotModal();
-        });
+        // Auth manejado por auth.js (Firebase)
     </script>
 </body>
 </html>
