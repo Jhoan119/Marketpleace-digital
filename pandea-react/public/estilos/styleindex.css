@@ -1,0 +1,327 @@
+/* Estilos para modales de login y registro */
+:root {
+    --bg-card: #262836;
+    --bg-panel: #1f2131;
+    --border: rgba(156, 146, 206, 0.25);
+    --accent: #7f6ff3;
+    --accent-dark: #5f54d2;
+    --accent-soft: #b5abff;
+    --text-main: #e3e3f5;
+    --text-muted: #a6a6bf;
+    --text-soft: #c8c7e5;
+    --shadow: rgba(56, 48, 103, 0.24);
+    --shadow-strong: rgba(31, 29, 59, 0.28);
+    --input-bg: rgba(255,255,255,0.04);
+    --input-border: rgba(255,255,255,0.1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(12, 15, 44, 0.295);
+    backdrop-filter: blur(14px);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.35s ease;
+}
+.modal.open { display: flex; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes slideUp {
+    from { transform: translateY(30px) scale(0.97); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-card {
+    background: linear-gradient(180deg, var(--bg-card) 0%,rgb(18, 13, 92), #030425 100%);
+    border-radius: 24px;
+    padding: 52px 40px;
+    width: 90%;
+    max-width: 480px;
+    text-align: center;
+    position: relative;
+    animation: slideUp 0.45s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    box-shadow: 0 24px 70px var(--shadow-strong), inset 0 1px 2px rgba(124, 131, 233, 0.418);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.modal-card h2, .modal-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--text-main);
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+.modal-card p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--text-soft);
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-close:hover {
+    background: rgba(255,255,255,0.12);
+    transform: rotate(90deg);
+    color: var(--text-main);
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-header {
+    margin-bottom: 36px;
+}
+
+.form-header h2 {
+    font-family: 'Fredoka', 'Playfair Display', serif;
+    font-size: 34px;
+    color: var(--text-main);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 16px 55px 16px 46px;
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 14px;
+    color: var(--text-main);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    transition: all 0.25s ease;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.08);
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(255,255,255,0.45);
+}
+
+.input-wrapper input:focus {
+    border-color: rgba(127, 111, 243, 0.55);
+    background: rgba(255,255,255,0.06);
+    box-shadow: 0 0 0 4px rgba(127, 111, 243, 0.08);
+}
+
+.input-wrapper input:focus + i {
+    color: var(--accent-soft);
+}
+
+.input-wrapper input::-ms-reveal,
+.input-wrapper input::-ms-clear,
+.input-wrapper input::-webkit-credentials-auto-fill-button,
+.input-wrapper input::-webkit-textfield-decoration-container,
+.input-wrapper input::-webkit-password-toggle-button {
+    display: none !important;
+}
+
+.toggle-pass {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgba(255,255,255,0.9);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    z-index: 2;
+    transition: color 0.25s ease;
+}
+.toggle-pass:hover {
+    color: var(--text-main);
+}
+
+.form-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    gap: 16px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.remember input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.remember span {
+    font-size: 14px;
+    color: var(--text-soft);
+    font-weight: 500;
+}
+
+.forgot-link {
+    font-size: 14px;
+    color: var(--text-soft);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+.forgot-link:hover {
+    color: var(--text-main);
+    text-decoration: underline;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, rgb(75, 20, 128), rgb(104, 86, 238));
+    color: var(--text-main);
+    border: none;
+    border-radius: 14px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.4px;
+    box-shadow: 0 12px 30px rgba(43, 36, 86, 0.25);
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 14px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(43, 36, 86, 0.28);
+}
+.btn-submit:hover::before {
+    opacity: 1;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 32px 0;
+}
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    border-radius: 1px;
+}
+.divider span {
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    background: rgba(255,255,255,0.04);
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.08);
+    font-weight: 600;
+}
+
+.register-prompt {
+    text-align: center;
+    font-size: 15px;
+    color: var(--text-soft);
+    font-weight: 500;
+}
+
+.register-prompt a {
+    color: var(--accent-soft);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 6px;
+    transition: color 0.25s ease;
+}
+.register-prompt a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .modal-card { padding: 36px 24px; margin: 24px; }
+    .form-header h2 { font-size: 30px; }
+}
